@@ -28,11 +28,9 @@ def generate_idea():
     response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, json=data)
 
     if response.status_code == 200:
-        idea = response.json()['choices'][0]['message']['content']
-        print(response.text)
+        idea = response.json()['choices'][0]['message']['content']  
         return jsonify({'idea': idea})
     else:
-        print(response.text)
         return jsonify({'error': 'Erro ao gerar ideia'}), 500
 
 if __name__ == '__main__':
